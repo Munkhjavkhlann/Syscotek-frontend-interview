@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  db:
+    container_name: dummycritics-db
+    image: mariadb
+    platform: linux/x86_64
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    volumes:
+      - ./db/data/lib:/var/lib/mysql
+      - ./db/data/initdb:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: dummycritics
+    ports:
+      - "3306:3306"
