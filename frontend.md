@@ -16,12 +16,13 @@ A local database named `dummycritics` will be created. You can connect to it on 
 
 The back-end uses Prisma to manage the database. You should explore the Prisma schema.
 
-Run the Next.js app.
-
 ```
 cd dummy-critics
+npm install
 npm run dev
 ```
+
+Next.js app will start on `http://localhost:3000`.
 
 ---
 
@@ -77,5 +78,7 @@ We will examine the following.
 - User Interface: how you have designed the screens, layouts and components
 - If used, the choice of external libraries
   - how well they integrate with the app in code and in design
+
+You can find the submission form link in the email you have received. You must submit your app git repo URL in 48 hours after receiving the email.
 
 **If you have any questions, please ask your supervisor immediately.**
