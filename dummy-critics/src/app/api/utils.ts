@@ -29,3 +29,28 @@ export const assertAuthentication = async (request: Request) => {
     throw new Error("Authentication failed.");
   }
 };
+
+export const getContentDetails = async (contentUri: string) => {
+  const [contentType, contentId] = contentUri.split("_");
+
+  const res = await fetch(
+    `https://api.themoviedb.org/3/${contentType}/${contentId}`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.MOVIEDB_KEY}`,
+      },
+    }
+  );
+  const content = await res.json();
+
+  return {
+    uri: contentUri,
+    name: content.title ?? content.name,
+    overview: content.overview,
+    poster_url: `https://image.tmdb.org/t/p/w500${content.poster_path}`,
+    backdrop_url: `https://image.tmdb.org/t/p/original${content.backdrop_path}`,
+    tagline: content.tagline,
+    score: content.vote_avereage,
+    genres: content.genres,
+  };
+};

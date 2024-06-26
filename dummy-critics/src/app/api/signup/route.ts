@@ -13,5 +13,8 @@ export async function POST(request: Request) {
     },
   });
 
-  return Response.json("success");
+  return Response.json({
+    id: result.id,
+    email: result.email,
+  });
 }

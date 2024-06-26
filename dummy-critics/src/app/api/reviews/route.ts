@@ -1,6 +1,6 @@
 import prisma from "@/prisma/client";
 const bcrypt = require("bcrypt");
-import { assertAuthentication } from "../utils";
+import { assertAuthentication, getContentDetails } from "../utils";
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
@@ -14,7 +14,14 @@ export async function GET(request: Request) {
     },
   });
 
-  return Response.json(reviews);
+  const content = await getContentDetails(contentUri);
+
+  return Response.json(
+    reviews.map((review) => ({
+      ...review,
+      content: content,
+    }))
+  );
 }
 
 export async function PUT(request: Request) {
