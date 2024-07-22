@@ -9,6 +9,11 @@ export async function POST(request: Request) {
     where: {
       email: email,
     },
+    select: {
+      id: true,
+      email: true,
+      password: true,
+    },
   });
 
   if (!user) {

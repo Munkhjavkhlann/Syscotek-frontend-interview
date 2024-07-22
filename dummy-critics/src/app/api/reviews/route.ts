@@ -12,6 +12,9 @@ export async function GET(request: Request) {
     where: {
       content_uri: `${contentUri}`,
     },
+    include: {
+      user: true,
+    },
   });
 
   const content = await getContentDetails(contentUri);
