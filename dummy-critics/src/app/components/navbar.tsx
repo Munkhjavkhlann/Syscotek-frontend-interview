@@ -23,7 +23,7 @@ export const Navbar = () => {
 
   const handleCloseMenu = () => {
     setMobileMenuOpen(false);
-    setShowSearch(false); // Close search when menu closes
+    setShowSearch(false); 
   };
 
   return (

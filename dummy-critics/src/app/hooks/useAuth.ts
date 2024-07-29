@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useStore, useInitializeStore } from "../store/store"; // Adjust the import based on your actual hook location
+import { useStore, useInitializeStore } from "../store/store";
 
 export const useAuth = () => {
   const { user, logout } = useStore((state) => ({
