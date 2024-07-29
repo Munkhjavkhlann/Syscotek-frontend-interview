@@ -34,5 +34,14 @@ export async function POST(request: Request) {
     expiresIn: "1h",
   });
 
-  return Response.json({ token: accessToken });
+  return new Response(
+    JSON.stringify({
+      user: { id: user.id, email: user.email },
+      token: accessToken,
+    }),
+    {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    }
+  );
 }
